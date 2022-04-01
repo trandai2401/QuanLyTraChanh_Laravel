@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('topping_thems', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("chiTietDon_id");
+            $table->BigInteger("gia");
+            $table->integer("soluong");
+            $table->unsignedBigInteger("mon_id");
+
+            
+            $table->foreign('mon_id')->references('id')->on('mons');
+            $table->foreign('chiTietDon_id')->references('id')->on('chi_tiet_dons');
             $table->timestamps();
         });
     }

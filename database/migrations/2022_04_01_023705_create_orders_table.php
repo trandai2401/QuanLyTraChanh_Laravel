@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger("tongtien");
+            $table->string("vitri");
+            $table->boolean("status");
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('chi_tiet_hoa_dons', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger("hoaDon_id");
+            $table->unsignedBigInteger("chitietdon_id");
+
+            $table->primary(['hoaDon_id', 'chitietdon_id']);
+            $table->foreign('hoaDon_id')->references('id')->on('hoa_don_thanh_toans');
+            $table->foreign('chitietdon_id')->references('id')->on('chi_tiet_dons');
+
             $table->timestamps();
         });
     }

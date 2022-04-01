@@ -1,0 +1,36 @@
+*{
+    margin: 0 auto;
+    font-family: 'Cabin', sans-serif;
+ 
+}
+
+.container .logo {
+    width: 50%;
+    height: 50%;
+    
+}
+
+.container .logo  img{
+    width: 50%;
+    height: 50%;
+}
+
+.form_dangnhap {
+    font-size:20px;
+    width: 30%;
+}
+
+#quenPass{
+    font-size:15px;
+    text-decoration: none;
+    color: #2f8902;
+}
+
+#btn_dangnhap{
+    padding: 10px 20px;
+    font-size:15px;
+    background-color:#004303;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->boolean('trangthai');
 
             $table->unsignedBigInteger('danhmuc_id');
-            $table->foreign('danhmuc_id')->references('id')->on('danhmucs');;
+            $table->foreign('danhmuc_id')->references('id')->on('danh_mucs');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_dons', function (Blueprint $table) {
             $table->id();
+            $table->String('ten');
+            $table->bigInteger("gia");
+            $table->bigInteger("soluong");
+            $table->unsignedBigInteger("mon_id");
+            $table->foreign('mon_id')->references('id')->on('mons');
+
+    
             $table->timestamps();
         });
     }

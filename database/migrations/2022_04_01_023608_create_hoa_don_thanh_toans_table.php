@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('hoa_don_thanh_toans', function (Blueprint $table) {
             $table->id();
+            $table->date('ngaythanhtoan');
+            $table->bigInteger("tongtien");
+            $table->unsignedBigInteger("create_by");
+            $table->unsignedBigInteger("collected_by");
+
+            $table->foreign('create_by')->references('id')->on('users');
+            $table->foreign('collected_by')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

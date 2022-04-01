@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,14 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
+    DB::table('users')->insert(["name"=>"admin", "email"=>"admin","password"=> bcrypt("12345"),"role_id"=>1,"status"=>true]);
+    
     return view('welcome');
 });
 
+Route::get('gioithieu', function () {
+    return view('gioithieu');
+});
 
 Route::prefix('login')->group(function () {
     Route::get('/', function (Request $request) {
@@ -26,4 +34,19 @@ Route::prefix('login')->group(function () {
     echo $url;
        return view('login');
     });
+
+    Route::post('/', function (Request $request) {
+        $username = $request['username'];
+        $password = $request['password'];
+
+        $user = Auth::attempt(['name' => $username, 'password' => $password]);
+        if ($user) {
+            return 1;
+            // return redirect('home');
+        } else {
+            return view('login',['erorr' => 'Sai mật khẩu hoặc tên đăng nhập']);
+        }
+    });
 });
+
+
