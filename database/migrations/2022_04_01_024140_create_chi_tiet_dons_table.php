@@ -18,6 +18,7 @@ return new class extends Migration
             $table->String('ten');
             $table->bigInteger("gia");
             $table->bigInteger("soluong");
+            $table->integer('dongia');
             $table->unsignedBigInteger("mon_id");
             $table->foreign('mon_id')->references('id')->on('mons');
 

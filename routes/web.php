@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Order;
 use Illuminate\Support\Facades\Route;
 use App\Models\Role;
 use App\Models\User;
@@ -22,6 +23,10 @@ Route::get('/', function () {
     DB::table('users')->insert(["name"=>"admin", "email"=>"admin","password"=> bcrypt("12345"),"role_id"=>1,"status"=>true]);
     
     return view('welcome');
+});
+
+Route::get("token",function(){
+    echo csrf_token();
 });
 
 Route::get('gioithieu', function () {
@@ -47,6 +52,17 @@ Route::prefix('login')->group(function () {
             return view('login',['erorr' => 'Sai mật khẩu hoặc tên đăng nhập']);
         }
     });
+});
+
+
+Route::prefix("order")->group(function () {
+    Route::get('/', [Order::class,'getOrder']);
+      Route::get('/new-order', [Order::class,'getNewOrder'] );
+    Route::get('/{order_id}', [Order::class,'getOrderByID'] );
+
+    Route::post('/addDrinksForOrder',[Order::class,'postAddDrink']);
+
+
 });
 
 

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("tongtien");
-            $table->string("vitri");
+            $table->bigInteger("tongtien")->nullable();
+            $table->string("vitri")->nullable();
             $table->boolean("status");
 
             $table->timestamps();

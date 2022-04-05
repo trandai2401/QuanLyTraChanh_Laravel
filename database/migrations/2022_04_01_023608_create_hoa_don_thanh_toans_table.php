@@ -14,14 +14,23 @@ return new class extends Migration
     public function up()
     {
         Schema::create('hoa_don_thanh_toans', function (Blueprint $table) {
+     
+
             $table->id();
-            $table->date('ngaythanhtoan');
-            $table->bigInteger("tongtien");
+            
+            $table->datetime('thoigianvao')->nullable();
+            $table->datetime('thoigianthanhtoan')->nullable();
+            $table->bigInteger("tongtien")->nullable();
             $table->unsignedBigInteger("create_by");
             $table->unsignedBigInteger("collected_by");
+            $table->unsignedBigInteger("chuongtrinhgiamgia_id")->nullable();
+
 
             $table->foreign('create_by')->references('id')->on('users');
             $table->foreign('collected_by')->references('id')->on('users');
+            $table->foreign('chuongtrinhgiamgia_id')->references('id')->on('chuong_trinh_giam_gias');
+
+           
 
             $table->timestamps();
         });

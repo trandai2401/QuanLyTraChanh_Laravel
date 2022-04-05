@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('topping_thems', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("chiTietDon_id");
+            $table->string("ten")->nullable();
             $table->BigInteger("gia");
             $table->integer("soluong");
             $table->unsignedBigInteger("mon_id");

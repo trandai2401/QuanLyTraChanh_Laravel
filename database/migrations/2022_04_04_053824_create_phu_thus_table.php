@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mons', function (Blueprint $table) {
+        Schema::create('phu_thus', function (Blueprint $table) {
             $table->id();
-            $table->string('ten');
-            $table->bigInteger("gia");
-            $table->boolean('trangthai')->default(true);
-            $table->unsignedBigInteger('danhmuc_id');
-            $table->foreign('danhmuc_id')->references('id')->on('danh_mucs');
-            $table->string('created_by');
-            $table->text("url_image")->nullable();
+            $table->integer('phantram')->nullable();
+            $table->integer('sotien')->nullable();
+            $table->integer('muctienapdung')->nullable();
+            $table->boolean('trangthai');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mons');
+        Schema::dropIfExists('phu_thus');
     }
 };
